@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreatorWar | #1 YouTuber Leaderboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .neon-border { box-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
+    </style>
+</head>
+<body class="bg-gray-950 text-white font-sans min-h-screen">
+
+    <header class="border-b border-gray-800 p-4 flex justify-between items-center max-w-5xl mx-auto">
+        <h1 class="text-2xl font-black tracking-wider text-red-500">CREATOR<span class="text-white">WAR</span></h1>
+        <button onclick="openModal()" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-5 rounded-full transition shadow-lg shadow-red-600/30">
+            🔥 Outbid #1 Now
+        </button>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-4 space-y-8 mt-4">
+
+        <section class="bg-gray-900 border border-red-500/50 rounded-2xl p-6 neon-border text-center">
+            <span class="bg-red-500/20 text-red-400 text-xs font-bold uppercase px-3 py-1 rounded-full border border-red-500/30">
+                👑 Current #1 King
+            </span>
+            <h2 id="kingName" class="text-3xl font-extrabold mt-3">Rai Warrior Highlights</h2>
+            <p class="text-gray-400 text-sm mt-1">Current Highest Bid: <span id="kingBid" class="text-green-400 font-bold text-lg">₹500</span></p>
+
+            <div class="mt-5 aspect-video w-full max-w-2xl mx-auto rounded-xl overflow-hidden border border-gray-800 shadow-2xl">
+                <iframe id="kingVideo" class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div class="mt-4">
+                <a id="kingLink" href="https://youtube.com" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white text-sm font-semibold py-2 px-6 rounded-lg transition">
+                    Visit & Subscribe Channel
+                </a>
+            </div>
+        </section>
+
+        <section class="bg-gray-900/80 border border-gray-800 rounded-2xl p-6">
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                🏆 Top Rankings
+            </h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-gray-300">
+                    <thead class="text-xs uppercase bg-gray-800/60 text-gray-400">
+                        <tr>
+                            <th class="p-3">Rank</th>
+                            <th class="p-3">Creator / Channel</th>
+                            <th class="p-3">Amount</th>
+                            <th class="p-3 text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800 font-medium">
+                        <tr class="hover:bg-gray-800/40">
+                            <td class="p-3 text-yellow-400 font-bold text-base">#1</td>
+                            <td class="p-3 font-semibold text-white">Rai Warrior Highlights</td>
+                            <td class="p-3 text-green-400 font-bold">₹500</td>
+                            <td class="p-3 text-right"><a href="#" class="text-red-400 hover:underline">View</a></td>
+                        </tr>
+                        <tr class="hover:bg-gray-800/40">
+                            <td class="p-3 text-gray-400 font-bold">#2</td>
+                            <td class="p-3">Headshot Gamer FF</td>
+                            <td class="p-3 text-green-400">₹350</td>
+                            <td class="p-3 text-right"><a href="#" class="text-red-400 hover:underline">View</a></td>
+                        </tr>
+                        <tr class="hover:bg-gray-800/40">
+                            <td class="p-3 text-gray-400 font-bold">#3</td>
+                            <td class="p-3">Sniper King</td>
+                            <td class="p-3 text-green-400">₹100</td>
+                            <td class="p-3 text-right"><a href="#" class="text-red-400 hover:underline">View</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="bidModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-gray-900 border border-gray-800 w-full max-w-md rounded-2xl p-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">✕</button>
+
+            <h3 class="text-xl font-bold text-white mb-1">Outbid #1 Spot</h3>
+            <p class="text-xs text-gray-400 mb-4">Minimum bid required: <span class="text-green-400 font-bold">₹510</span></p>
+
+            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Channel Name</label>
+                    <input type="text" required placeholder="e.g. HEAD EXPERT" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-red-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">YouTube Video / Channel URL</label>
+                    <input type="url" required placeholder="https://youtube.com/..." class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-red-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Your Bid Amount (₹)</label>
+                    <input type="number" min="510" required placeholder="510" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-red-500">
+                </div>
+
+                <!-- UPI QR Code Section with your ID -->
+                <div class="bg-gray-950 border border-gray-800 rounded-xl p-4 text-center">
+                    <p class="text-xs text-gray-400 mb-1">Scan & Pay via any UPI App</p>
+                    <p class="text-xs font-mono text-gray-500 mb-3">UPI ID: 9359124834@fam</p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=9359124834@fam&pn=CreatorWar" alt="UPI QR" class="mx-auto rounded-lg border border-gray-800 shadow-md">
+                    <p class="text-xs text-yellow-400/90 mt-3">पेमेंट करने के बाद 12-अंकों का UTR / Ref नंबर नीचे डालें:</p>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">12-Digit UPI Ref / UTR No.</label>
+                    <input type="text" maxlength="12" minlength="12" required placeholder="123456789012" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-red-500">
+                </div>
+
+                <button type="submit" class="w-full bg-red-600 hover:bg-red-700 font-bold py-3 rounded-lg transition text-sm shadow-lg shadow-red-600/30">
+                    Submit Bid for Verification
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('bidModal').classList.remove('hidden');
+        }
+        function closeModal() {
+            document.getElementById('bidModal').classList.add('hidden');
+        }
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert("डिटेल्स सबमिट हो गईं! आपके UTR का पेमेंट वेरिफ़ाई होते ही आपका चैनल #1 पर लाइव हो जाएगा।");
+            closeModal();
+        }
+    </script>
+</body>
+</html>
